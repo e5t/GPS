@@ -49,6 +49,24 @@ def stream_position():
             if(line_str[4] == 'G'):
                  print(line_str)
         
+def stream_position_a():
+    # while True:
+        for i in range(300):
+            line = ser.readline()
+            line = line.decode('utf8')
+            # print(line[4])
+            if(line[4] == 'G'):
+                gpgga = nmea.GPGGA()
+                gpgga.parse(line)
+                lats = gpgga.latitude
+                longs = gpgga.longitude
+                #convert degrees,decimal minutes to decimal degrees 
+                lat1 = (float(lats[2]+lats[3]+lats[4]+lats[5]+lats[6]+lats[7]+lats[8]))/60
+                lat_degrees = (float(lats[0]+lats[1])+lat1)
+                long1 = (float(longs[3]+longs[4]+longs[5]+longs[6]+longs[7]+longs[8]+longs[9]))/60
+                long_degrees = (float(longs[0]+longs[1]+longs[2])+long1)
+                print(f"The latitude/longitude is {lat_degrees} -{long_degrees} ")
+                print(line, end="")
 
 
 
@@ -57,6 +75,7 @@ def stream_position():
 scan()
 init_serial()
 # stream_serial()
-stream_position()
+# stream_position()
+stream_position_a()
 close_serial()
 ser.close()
