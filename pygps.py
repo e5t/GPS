@@ -65,8 +65,8 @@ def stream_position_a():
                 lat_degrees = (float(lats[0]+lats[1])+lat1)
                 long1 = (float(longs[3]+longs[4]+longs[5]+longs[6]+longs[7]+longs[8]+longs[9]))/60
                 long_degrees = (float(longs[0]+longs[1]+longs[2])+long1)
-                print(f"The latitude/longitude is {lat_degrees} -{long_degrees} ")
-                print(line, end="")
+                print(f"The latitude/longitude is {lat_degrees:.8} -{long_degrees:.8} ")
+                # print(line, end="")
 
 
 
