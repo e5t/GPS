@@ -1,6 +1,4 @@
 # Based on the Python GPS example given by SparkFun Electronics [A.Weiss]
-
-
 import serial
 from serial.tools import list_ports
 from pynmea import nmea
@@ -16,7 +14,6 @@ COMPORT = 'COM3'
 def scan():
     print([comport.device for comport in serial.tools.list_ports.comports()])
 
-
 def init_serial():
     global ser
     ser = serial.Serial(
@@ -25,12 +22,8 @@ def init_serial():
     timeout =1
     )
 
-
 def close_serial():
     ser.close()
-
-
-        
 
 def stream_serial():
     # stream data directly from the serial port
@@ -38,7 +31,6 @@ def stream_serial():
         line = ser.readline()
         line_str = str(line)
         print(line_str)
-
 
 def stream_position():
     # while True:
@@ -67,10 +59,6 @@ def stream_position_a():
                 long_degrees = (float(longs[0]+longs[1]+longs[2])+long1)
                 print(f"The latitude/longitude is {lat_degrees:.8} -{long_degrees:.8} ")
                 # print(line, end="")
-
-
-
-
 
 scan()
 init_serial()
